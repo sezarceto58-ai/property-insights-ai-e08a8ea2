@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import TerraScore from "@/components/TerraScore";
 import OfferModal from "@/components/OfferModal";
+import PropertyAIAnalysis from "@/components/PropertyAIAnalysis";
 import { mockProperties, terraScoreBreakdown } from "@/data/mockData";
 import { useToast } from "@/hooks/use-toast";
 
@@ -190,6 +191,9 @@ export default function PropertyDetail() {
               </div>
             </div>
           </div>
+
+          {/* AI Analysis */}
+          <PropertyAIAnalysis property={property} />
         </div>
       </div>
 

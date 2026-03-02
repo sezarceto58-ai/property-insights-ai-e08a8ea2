@@ -23,14 +23,18 @@ export default function Auth() {
   const { toast } = useToast();
 
   const redirectByRole = async (userId: string) => {
-    const { data } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .limit(1)
-      .single();
-    const r = data?.role ?? "buyer";
-    navigate(r === "seller" ? "/seller" : r === "admin" ? "/admin" : "/buyer");
+    try {
+      const { data } = await (supabase as any)
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .limit(1)
+        .single();
+      const r = (data as any)?.role ?? "buyer";
+      navigate(r === "seller" ? "/seller" : r === "admin" ? "/admin" : "/buyer");
+    } catch {
+      navigate("/buyer");
+    }
   };
 
   useEffect(() => {
