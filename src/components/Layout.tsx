@@ -80,7 +80,11 @@ const sellerNav = [
   label: "Performance",
   items: [
   { path: "/seller/analytics", icon: BarChart3, label: "Analytics" }]
-
+},
+{
+  label: "AI Tools",
+  items: [
+  { path: "/seller/ai-assistant", icon: TrendingUp, label: "AI Assistant ⭐" }]
 }];
 
 
