@@ -14,12 +14,256 @@ export type Database = {
   }
   public: {
     Tables: {
+      development_phases: {
+        Row: {
+          actual_cost: number | null
+          actual_end: string | null
+          actual_start: string | null
+          budget: number | null
+          color: string | null
+          created_at: string
+          end_date: string | null
+          id: string
+          name: string
+          notes: string | null
+          opportunity_id: string
+          phase_order: number
+          progress: number | null
+          start_date: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          actual_cost?: number | null
+          actual_end?: string | null
+          actual_start?: string | null
+          budget?: number | null
+          color?: string | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          opportunity_id: string
+          phase_order?: number
+          progress?: number | null
+          start_date?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          actual_cost?: number | null
+          actual_end?: string | null
+          actual_start?: string | null
+          budget?: number | null
+          color?: string | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          opportunity_id?: string
+          phase_order?: number
+          progress?: number | null
+          start_date?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "development_phases_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      opportunities: {
+        Row: {
+          address: string | null
+          ai_analysis: Json | null
+          bathrooms: number | null
+          bedrooms: number | null
+          built_area: number | null
+          city: string | null
+          country: string | null
+          created_at: string
+          currency: string | null
+          description: string | null
+          entry_price: number | null
+          estimated_dev_cost: number | null
+          expected_revenue: number | null
+          floors: number | null
+          id: string
+          images: string[] | null
+          investment_score: number | null
+          investment_type: string
+          land_area: number | null
+          legal_status: string | null
+          location: Json
+          permit_status: string | null
+          property_type: string
+          risk_level: string | null
+          status: string
+          tags: string[] | null
+          timeline_months: number | null
+          title: string
+          updated_at: string
+          user_id: string
+          year_built: number | null
+          zoning: string | null
+        }
+        Insert: {
+          address?: string | null
+          ai_analysis?: Json | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          built_area?: number | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          entry_price?: number | null
+          estimated_dev_cost?: number | null
+          expected_revenue?: number | null
+          floors?: number | null
+          id?: string
+          images?: string[] | null
+          investment_score?: number | null
+          investment_type?: string
+          land_area?: number | null
+          legal_status?: string | null
+          location?: Json
+          permit_status?: string | null
+          property_type?: string
+          risk_level?: string | null
+          status?: string
+          tags?: string[] | null
+          timeline_months?: number | null
+          title: string
+          updated_at?: string
+          user_id: string
+          year_built?: number | null
+          zoning?: string | null
+        }
+        Update: {
+          address?: string | null
+          ai_analysis?: Json | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          built_area?: number | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          entry_price?: number | null
+          estimated_dev_cost?: number | null
+          expected_revenue?: number | null
+          floors?: number | null
+          id?: string
+          images?: string[] | null
+          investment_score?: number | null
+          investment_type?: string
+          land_area?: number | null
+          legal_status?: string | null
+          location?: Json
+          permit_status?: string | null
+          property_type?: string
+          risk_level?: string | null
+          status?: string
+          tags?: string[] | null
+          timeline_months?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          year_built?: number | null
+          zoning?: string | null
+        }
+        Relationships: []
+      }
+      opportunity_documents: {
+        Row: {
+          created_at: string
+          doc_type: string | null
+          extracted_data: Json | null
+          file_url: string | null
+          id: string
+          name: string
+          opportunity_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          doc_type?: string | null
+          extracted_data?: Json | null
+          file_url?: string | null
+          id?: string
+          name: string
+          opportunity_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          doc_type?: string | null
+          extracted_data?: Json | null
+          file_url?: string | null
+          id?: string
+          name?: string
+          opportunity_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "opportunity_documents_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       project_plans: {
         Row: {
           created_at: string
           id: string
-          land_area: number
-          land_location: Json
+          land_area: number | null
+          land_location: Json | null
           max_floors: number | null
           restrictions: string[] | null
           result: Json | null
@@ -31,8 +275,8 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
-          land_area: number
-          land_location: Json
+          land_area?: number | null
+          land_location?: Json | null
           max_floors?: number | null
           restrictions?: string[] | null
           result?: Json | null
@@ -44,8 +288,8 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
-          land_area?: number
-          land_location?: Json
+          land_area?: number | null
+          land_location?: Json | null
           max_floors?: number | null
           restrictions?: string[] | null
           result?: Json | null
@@ -58,19 +302,16 @@ export type Database = {
       }
       user_roles: {
         Row: {
-          created_at: string
           id: string
           role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Insert: {
-          created_at?: string
           id?: string
-          role?: Database["public"]["Enums"]["app_role"]
+          role: Database["public"]["Enums"]["app_role"]
           user_id: string
         }
         Update: {
-          created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
@@ -91,7 +332,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "buyer" | "seller" | "admin" | "developer"
+      app_role: "buyer" | "seller" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -219,7 +460,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["buyer", "seller", "admin", "developer"],
+      app_role: ["buyer", "seller", "admin"],
     },
   },
 } as const
