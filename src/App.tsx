@@ -28,6 +28,7 @@ import SellerOffers from "@/pages/SellerOffers";
 import SellerAnalytics from "@/pages/SellerAnalytics";
 import CreateProperty from "@/pages/CreateProperty";
 import AgentCRM from "@/pages/AgentCRM";
+import SellerAIAssistant from "@/pages/SellerAIAssistant";
 
 // Developer pages
 import DeveloperDashboard from "@/pages/DeveloperDashboard";
@@ -93,7 +94,7 @@ const App = () => (
                   <Route path="/crm" element={<AgentCRM />} />
                   <Route path="/messages" element={<Messaging />} />
                   <Route path="/analytics" element={<SellerAnalytics />} />
-                  <Route path="/ai-assistant" element={<CreateProperty />} />
+                  <Route path="/ai-assistant" element={<SellerAIAssistant />} />
                   <Route path="/investor" element={<InvestorTools />} />
                 </Routes>
               </Layout>
