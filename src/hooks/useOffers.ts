@@ -32,11 +32,13 @@ export function useCreateOffer() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (offer: Partial<DbOffer>) => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) throw new Error("Not authenticated");
-      const { data, error } = await supabase.from("offers").insert({ ...offer, buyer_id: user.id } as any).select().single();
+      // IMPORTANT: offer creation is enforced server-side (tier limits, elite-only options)
+      const { data, error } = await supabase.functions.invoke("create-offer", {
+        body: offer,
+      });
       if (error) throw error;
-      return data;
+      if (!data?.offer) throw new Error("Offer creation failed");
+      return data.offer as DbOffer;
     },
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["my-offers"] }); qc.invalidateQueries({ queryKey: ["seller-offers"] }); },
   });
