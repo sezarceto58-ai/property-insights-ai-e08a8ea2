@@ -61,7 +61,7 @@ export default function OfferModal({ property, onClose }: OfferModalProps) {
         const { data: pub } = supabase.storage.from("offer-documents").getPublicUrl(objectPath);
         const url = pub?.publicUrl;
 
-        const { error: docError } = await (supabase as any)
+        const { error: docError } = await supabase
           .from("offer_documents")
           .insert({
             offer_id: created.id,
@@ -70,12 +70,12 @@ export default function OfferModal({ property, onClose }: OfferModalProps) {
             doc_type: "proof_of_funds",
             storage_path: objectPath,
             url,
-          });
+          } as any);
 
         if (docError) throw docError;
 
-        const { error: flipError } = await (supabase as any)
-          .rpc("set_offer_proof_uploaded", { p_offer_id: created.id, p_value: true });
+        const { error: flipError } = await supabase
+          .rpc("set_offer_proof_uploaded", { p_offer_id: created.id, p_value: true } as any);
         if (flipError) throw flipError;
       }
 
