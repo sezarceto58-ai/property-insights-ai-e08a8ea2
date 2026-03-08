@@ -58,6 +58,7 @@ export default function Settings() {
       </div>
 
       {activeTab === "profile" && <ProfileTab user={user} toast={toast} />}
+      {activeTab === "role" && <RoleSwitcher />}
       {activeTab === "billing" && (
         <BillingTab
           tier={tier}
