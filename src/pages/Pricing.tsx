@@ -144,7 +144,7 @@ export default function Pricing() {
 
                 {isCurrent ? (
                   <Button variant="outline" disabled className="w-full">
-                    Current Plan
+                    {t("pricing.currentPlan")}
                   </Button>
                 ) : key === "free" ? (
                   subscribed ? (
