@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Check, Crown, ArrowRight, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 export default function Pricing() {
   const { tier, subscribed, subscribe, manageSubscription, loading } = useSubscription();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [subscribing, setSubscribing] = useState<string | null>(null);
   const [billing, setBilling] = useState<BillingInterval>("monthly");
 
@@ -36,10 +38,10 @@ export default function Pricing() {
     <div className="max-w-5xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-display font-bold mb-3">
-          Choose Your <span className="text-gradient-gold">Plan</span>
+          {t("pricing.title")}
         </h1>
         <p className="text-muted-foreground max-w-lg mx-auto mb-8">
-          Unlock premium features to supercharge your real estate journey.
+          {t("pricing.subtitle")}
         </p>
 
         {/* Billing Toggle */}
@@ -52,7 +54,7 @@ export default function Pricing() {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Monthly
+            {t("pricing.monthly")}
           </button>
           <button
             onClick={() => setBilling("yearly")}
@@ -62,13 +64,13 @@ export default function Pricing() {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Yearly
+            {t("pricing.yearly")}
           </button>
         </div>
         {billing === "yearly" && (
-          <p className="text-sm text-primary mt-2 font-medium">
-            Save up to 50% with yearly billing!
-          </p>
+           <p className="text-sm text-primary mt-2 font-medium">
+            {t("pricing.yearlySavings")}
+           </p>
         )}
       </div>
 
@@ -97,12 +99,12 @@ export default function Pricing() {
               >
                 {isPopular && !isCurrent && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
-                    Most Popular
+                    {t("pricing.mostPopular")}
                   </span>
                 )}
                 {isCurrent && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-gold text-primary-foreground text-xs font-semibold flex items-center gap-1">
-                    <Crown className="w-3 h-3" /> Your Plan
+                    <Crown className="w-3 h-3" /> {t("pricing.yourPlan")}
                   </span>
                 )}
 
@@ -111,7 +113,7 @@ export default function Pricing() {
                   <span className="text-4xl font-bold text-foreground">
                     ${displayPrice === 0 ? "0" : displayPrice.toFixed(displayPrice % 1 === 0 ? 0 : 2)}
                   </span>
-                  <span className="text-muted-foreground">/mo</span>
+                  <span className="text-muted-foreground">{t("pricing.perMonth")}</span>
                 </div>
 
                 {billing === "yearly" && discount && (
@@ -119,14 +121,14 @@ export default function Pricing() {
                     <span className="text-sm line-through text-muted-foreground">
                       ${plan.monthly.price}/mo
                     </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                      Save {discount}%
-                    </span>
+                     <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                      {t("pricing.save")} {discount}%
+                     </span>
                   </div>
                 )}
                 {billing === "yearly" && key !== "free" && (
-                  <p className="text-xs text-muted-foreground mb-4">
-                    Billed ${plan.yearly.price}/year
+                   <p className="text-xs text-muted-foreground mb-4">
+                    {t("pricing.billed")} ${plan.yearly.price}{t("pricing.perYear")}
                   </p>
                 )}
                 {(billing === "monthly" || key === "free") && !discount && <div className="mb-4" />}
@@ -142,16 +144,16 @@ export default function Pricing() {
 
                 {isCurrent ? (
                   <Button variant="outline" disabled className="w-full">
-                    Current Plan
+                    {t("pricing.currentPlan")}
                   </Button>
                 ) : key === "free" ? (
                   subscribed ? (
                     <Button variant="outline" onClick={() => manageSubscription()} className="w-full">
-                      Downgrade
+                      {t("pricing.downgrade")}
                     </Button>
                   ) : (
                     <Button variant="outline" disabled className="w-full">
-                      Current Plan
+                      {t("pricing.currentPlan")}
                     </Button>
                   )
                 ) : (
@@ -161,7 +163,7 @@ export default function Pricing() {
                     className="w-full"
                   >
                     {subscribing === key && <Loader2 className="w-4 h-4 animate-spin mr-2" />}
-                    {tier !== "free" ? "Switch Plan" : "Get Started"}
+                    {tier !== "free" ? t("pricing.switchPlan") : t("pricing.getStarted")}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 )}
