@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Building2,
@@ -23,110 +24,79 @@ import {
   Briefcase,
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import LanguageToggle from "@/components/LanguageToggle";
 
-const buyerNav = [
-{
-  label: "Home",
-  items: [
-  { path: "/buyer", icon: LayoutDashboard, label: "Dashboard" }]
-
-},
-{
-  label: "Marketplace",
-  items: [
-  { path: "/buyer/discover", icon: Search, label: "Discover" },
-  { path: "/buyer/compare", icon: GitCompareArrows, label: "Compare" },
-  { path: "/buyer/favorites", icon: Heart, label: "Favorites" },
-  { path: "/buyer/alerts", icon: Bell, label: "Alerts" }]
-
-},
-{
-  label: "Offers & Deals",
-  items: [
-  { path: "/buyer/offers", icon: BadgeDollarSign, label: "My Offers" },
-  { path: "/buyer/messages", icon: MessageSquare, label: "Messages" }]
-
-},
-{
-  label: "Investor Tools",
-  items: [
-  { path: "/buyer/investor", icon: TrendingUp, label: "AI Intelligence" }]
-
-}];
+const buyerNav = (t: any) => [
+  { label: t("nav.home"), items: [
+    { path: "/buyer", icon: LayoutDashboard, label: t("nav.dashboard") },
+  ]},
+  { label: t("nav.marketplace"), items: [
+    { path: "/buyer/discover", icon: Search, label: t("nav.discover") },
+    { path: "/buyer/compare", icon: GitCompareArrows, label: t("nav.compare") },
+    { path: "/buyer/favorites", icon: Heart, label: t("nav.favorites") },
+    { path: "/buyer/alerts", icon: Bell, label: t("nav.alerts") },
+  ]},
+  { label: t("nav.offersDeals"), items: [
+    { path: "/buyer/offers", icon: BadgeDollarSign, label: t("nav.myOffers") },
+    { path: "/buyer/messages", icon: MessageSquare, label: t("common.messages") },
+  ]},
+  { label: t("nav.investorTools"), items: [
+    { path: "/buyer/investor", icon: TrendingUp, label: t("nav.aiIntelligence") },
+  ]},
+];
 
 
-const sellerNav = [
-{
-  label: "Home",
-  items: [
-  { path: "/seller", icon: LayoutDashboard, label: "Dashboard" }]
-
-},
-{
-  label: "Listings",
-  items: [
-  { path: "/seller/listings", icon: Building2, label: "My Listings" },
-  { path: "/seller/create", icon: Plus, label: "New Listing + AI" }]
-
-},
-{
-  label: "Sales Pipeline",
-  items: [
-  { path: "/seller/offers", icon: BadgeDollarSign, label: "Offer Inbox" },
-  { path: "/seller/crm", icon: Users, label: "CRM & Leads" },
-  { path: "/seller/messages", icon: MessageSquare, label: "Messages" }]
-
-},
-{
-  label: "Performance",
-  items: [
-  { path: "/seller/analytics", icon: BarChart3, label: "Analytics" }]
-},
-{
-  label: "AI Tools",
-  items: [
-  { path: "/seller/investor", icon: TrendingUp, label: "Investor Intelligence" }]
-}];
+const sellerNav = (t: any) => [
+  { label: t("nav.home"), items: [
+    { path: "/seller", icon: LayoutDashboard, label: t("nav.dashboard") },
+  ]},
+  { label: t("nav.listings"), items: [
+    { path: "/seller/listings", icon: Building2, label: t("nav.myListings") },
+    { path: "/seller/create", icon: Plus, label: t("nav.newListing") },
+  ]},
+  { label: t("nav.salesPipeline"), items: [
+    { path: "/seller/offers", icon: BadgeDollarSign, label: t("nav.offerInbox") },
+    { path: "/seller/crm", icon: Users, label: t("nav.crmLeads") },
+    { path: "/seller/messages", icon: MessageSquare, label: t("common.messages") },
+  ]},
+  { label: t("nav.performance"), items: [
+    { path: "/seller/analytics", icon: BarChart3, label: t("nav.analytics") },
+  ]},
+  { label: t("nav.aiTools"), items: [
+    { path: "/seller/investor", icon: TrendingUp, label: t("nav.investorIntelligence") },
+  ]},
+];
 
 
-const developerNav = [
-{
-  label: "Home",
-  items: [
-  { path: "/developer", icon: LayoutDashboard, label: "Dashboard" }]
-},
-{
-  label: "Opportunities",
-  items: [
-  { path: "/developer/opportunities", icon: Briefcase, label: "Opportunity Feed" },
-  { path: "/developer/portfolio", icon: TrendingUp, label: "Portfolio Insights" }]
-},
-{
-  label: "Planning",
-  items: [
-  { path: "/developer/analyze", icon: Search, label: "Analyze Land" },
-  { path: "/developer/plans", icon: Building2, label: "All Plans" }]
-},
-{
-  label: "Tools",
-  items: [
-  { path: "/developer/messages", icon: MessageSquare, label: "Messages" }]
-}];
+const developerNav = (t: any) => [
+  { label: t("nav.home"), items: [
+    { path: "/developer", icon: LayoutDashboard, label: t("nav.dashboard") },
+  ]},
+  { label: t("nav.opportunities"), items: [
+    { path: "/developer/opportunities", icon: Briefcase, label: t("nav.opportunityFeed") },
+    { path: "/developer/portfolio", icon: TrendingUp, label: t("nav.portfolioInsights") },
+  ]},
+  { label: t("nav.planning"), items: [
+    { path: "/developer/analyze", icon: Search, label: t("nav.analyzeLand") },
+    { path: "/developer/plans", icon: Building2, label: t("nav.allPlans") },
+  ]},
+  { label: t("nav.tools"), items: [
+    { path: "/developer/messages", icon: MessageSquare, label: t("common.messages") },
+  ]},
+];
 
-const adminNav = [
-{
-  label: "Governance",
-  items: [
-  { path: "/admin", icon: Shield, label: "Console" }]
-
-}];
+const adminNav = (t: any) => [
+  { label: t("nav.governance"), items: [
+    { path: "/admin", icon: Shield, label: t("nav.console") },
+  ]},
+];
 
 
-function getNavForPath(pathname: string) {
-  if (pathname.startsWith("/developer")) return developerNav;
-  if (pathname.startsWith("/seller")) return sellerNav;
-  if (pathname.startsWith("/admin")) return adminNav;
-  return buyerNav;
+function getNavForPath(pathname: string, t: any) {
+  if (pathname.startsWith("/developer")) return developerNav(t);
+  if (pathname.startsWith("/seller")) return sellerNav(t);
+  if (pathname.startsWith("/admin")) return adminNav(t);
+  return buyerNav(t);
 }
 
 export default function Layout({ children }: {children: React.ReactNode;}) {
@@ -134,8 +104,9 @@ export default function Layout({ children }: {children: React.ReactNode;}) {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const { t } = useTranslation();
 
-  const nav = getNavForPath(location.pathname);
+  const nav = getNavForPath(location.pathname, t);
   const initials = user?.user_metadata?.display_name ?
   user.user_metadata.display_name.slice(0, 2).toUpperCase() :
   user?.email?.slice(0, 2).toUpperCase() ?? "TV";
@@ -210,7 +181,7 @@ export default function Layout({ children }: {children: React.ReactNode;}) {
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
           >
             <CreditCard className="w-4 h-4" />
-            Plans & Pricing
+            {t("common.pricing")}
           </Link>
           <Link
             to="/settings"
@@ -218,14 +189,14 @@ export default function Layout({ children }: {children: React.ReactNode;}) {
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
           >
             <Settings className="w-4 h-4" />
-            Settings
+            {t("common.settings")}
           </Link>
           <button
             onClick={handleSignOut}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-sidebar-accent hover:text-destructive transition-colors"
           >
             <LogOut className="w-4 h-4" />
-            Sign Out
+            {t("common.signOut")}
           </button>
         </div>
       </aside>
@@ -237,6 +208,7 @@ export default function Layout({ children }: {children: React.ReactNode;}) {
           </button>
           <div className="flex-1" />
           <div className="flex items-center gap-3">
+            <LanguageToggle />
             <button className="relative p-2 rounded-lg hover:bg-secondary text-muted-foreground transition-colors">
               <Bell className="w-4 h-4" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary animate-pulse-gold" />

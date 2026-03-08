@@ -59,6 +59,56 @@ export type Database = {
         }
         Relationships: []
       }
+      development_phases: {
+        Row: {
+          budget: number | null
+          created_at: string
+          end_date: string | null
+          id: string
+          name: string
+          opportunity_id: string
+          phase_order: number | null
+          progress: number | null
+          start_date: string | null
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          budget?: number | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          name: string
+          opportunity_id: string
+          phase_order?: number | null
+          progress?: number | null
+          start_date?: string | null
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          budget?: number | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          name?: string
+          opportunity_id?: string
+          phase_order?: number | null
+          progress?: number | null
+          start_date?: string | null
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "development_phases_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       favorites: {
         Row: {
           created_at: string | null
@@ -262,6 +312,105 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      opportunities: {
+        Row: {
+          address: string | null
+          ai_analysis: Json | null
+          bathrooms: number | null
+          bedrooms: number | null
+          built_area: number | null
+          city: string | null
+          country: string | null
+          created_at: string
+          currency: string | null
+          description: string | null
+          entry_price: number
+          estimated_dev_cost: number | null
+          expected_revenue: number | null
+          floors: number | null
+          id: string
+          investment_score: number | null
+          investment_type: string
+          land_area: number | null
+          legal_status: string | null
+          location: Json | null
+          permit_status: string | null
+          property_type: string
+          risk_level: string | null
+          status: string | null
+          tags: string[] | null
+          timeline_months: number | null
+          title: string
+          updated_at: string
+          user_id: string
+          zoning: string | null
+        }
+        Insert: {
+          address?: string | null
+          ai_analysis?: Json | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          built_area?: number | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          entry_price?: number
+          estimated_dev_cost?: number | null
+          expected_revenue?: number | null
+          floors?: number | null
+          id?: string
+          investment_score?: number | null
+          investment_type?: string
+          land_area?: number | null
+          legal_status?: string | null
+          location?: Json | null
+          permit_status?: string | null
+          property_type?: string
+          risk_level?: string | null
+          status?: string | null
+          tags?: string[] | null
+          timeline_months?: number | null
+          title: string
+          updated_at?: string
+          user_id: string
+          zoning?: string | null
+        }
+        Update: {
+          address?: string | null
+          ai_analysis?: Json | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          built_area?: number | null
+          city?: string | null
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          description?: string | null
+          entry_price?: number
+          estimated_dev_cost?: number | null
+          expected_revenue?: number | null
+          floors?: number | null
+          id?: string
+          investment_score?: number | null
+          investment_type?: string
+          land_area?: number | null
+          legal_status?: string | null
+          location?: Json | null
+          permit_status?: string | null
+          property_type?: string
+          risk_level?: string | null
+          status?: string | null
+          tags?: string[] | null
+          timeline_months?: number | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          zoning?: string | null
+        }
+        Relationships: []
       }
       project_plans: {
         Row: {
