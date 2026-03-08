@@ -121,9 +121,9 @@ export default function Pricing() {
                     <span className="text-sm line-through text-muted-foreground">
                       ${plan.monthly.price}/mo
                     </span>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                      Save {discount}%
-                    </span>
+                     <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                      {t("pricing.save")} {discount}%
+                     </span>
                   </div>
                 )}
                 {billing === "yearly" && key !== "free" && (
