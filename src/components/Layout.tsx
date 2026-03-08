@@ -46,38 +46,26 @@ const buyerNav = (t: any) => [
 ];
 
 
-const sellerNav = [
-{
-  label: "Home",
-  items: [
-  { path: "/seller", icon: LayoutDashboard, label: "Dashboard" }]
-
-},
-{
-  label: "Listings",
-  items: [
-  { path: "/seller/listings", icon: Building2, label: "My Listings" },
-  { path: "/seller/create", icon: Plus, label: "New Listing + AI" }]
-
-},
-{
-  label: "Sales Pipeline",
-  items: [
-  { path: "/seller/offers", icon: BadgeDollarSign, label: "Offer Inbox" },
-  { path: "/seller/crm", icon: Users, label: "CRM & Leads" },
-  { path: "/seller/messages", icon: MessageSquare, label: "Messages" }]
-
-},
-{
-  label: "Performance",
-  items: [
-  { path: "/seller/analytics", icon: BarChart3, label: "Analytics" }]
-},
-{
-  label: "AI Tools",
-  items: [
-  { path: "/seller/investor", icon: TrendingUp, label: "Investor Intelligence" }]
-}];
+const sellerNav = (t: any) => [
+  { label: t("nav.home"), items: [
+    { path: "/seller", icon: LayoutDashboard, label: t("nav.dashboard") },
+  ]},
+  { label: t("nav.listings"), items: [
+    { path: "/seller/listings", icon: Building2, label: t("nav.myListings") },
+    { path: "/seller/create", icon: Plus, label: t("nav.newListing") },
+  ]},
+  { label: t("nav.salesPipeline"), items: [
+    { path: "/seller/offers", icon: BadgeDollarSign, label: t("nav.offerInbox") },
+    { path: "/seller/crm", icon: Users, label: t("nav.crmLeads") },
+    { path: "/seller/messages", icon: MessageSquare, label: t("common.messages") },
+  ]},
+  { label: t("nav.performance"), items: [
+    { path: "/seller/analytics", icon: BarChart3, label: t("nav.analytics") },
+  ]},
+  { label: t("nav.aiTools"), items: [
+    { path: "/seller/investor", icon: TrendingUp, label: t("nav.investorIntelligence") },
+  ]},
+];
 
 
 const developerNav = [
