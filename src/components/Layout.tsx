@@ -61,6 +61,7 @@ const sellerNav = (t: any) => [
   ]},
   { label: t("nav.performance"), items: [
     { path: "/seller/analytics", icon: BarChart3, label: t("nav.analytics") },
+    { path: "/seller/verification", icon: Shield, label: t("nav.verification") },
   ]},
   { label: t("nav.aiTools"), items: [
     { path: "/seller/investor", icon: TrendingUp, label: t("nav.investorIntelligence") },
