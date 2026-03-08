@@ -15,7 +15,9 @@ import {
   Crown,
   Loader2,
   ExternalLink,
+  ShieldCheck,
 } from "lucide-react";
+import RoleSwitcher from "@/components/settings/RoleSwitcher";
 
 export default function Settings() {
   const [searchParams] = useSearchParams();
