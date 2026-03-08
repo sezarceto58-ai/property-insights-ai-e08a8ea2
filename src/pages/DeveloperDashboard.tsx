@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -27,6 +28,7 @@ const statusConfig: Record<string, { icon: any; color: string; label: string }> 
 };
 
 export default function DeveloperDashboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [plans, setPlans] = useState<PlanRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,12 +55,12 @@ export default function DeveloperDashboard() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-display font-bold text-foreground">Developer Dashboard</h1>
-          <p className="text-sm text-muted-foreground mt-1">AI-powered land feasibility planning at a glance.</p>
+          <h1 className="text-2xl font-display font-bold text-foreground">{t("developer.dashboardTitle")}</h1>
+          <p className="text-sm text-muted-foreground mt-1">{t("developer.dashboardSubtitle")}</p>
         </div>
         <Link to="/developer/analyze">
           <Button className="bg-gradient-gold text-primary-foreground shadow-gold hover:opacity-90">
-            <Plus className="w-4 h-4 mr-2" /> New Analysis
+            <Plus className="w-4 h-4 mr-2" /> {t("developer.newAnalysis")}
           </Button>
         </Link>
       </div>
@@ -66,10 +68,10 @@ export default function DeveloperDashboard() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { title: "Total Plans", value: plans.length, icon: FileText, color: "text-primary" },
-          { title: "Completed", value: completedPlans.length, icon: CheckCircle2, color: "text-success" },
-          { title: "Avg ROI", value: `${avgROI}%`, icon: TrendingUp, color: "text-warning" },
-          { title: "Processing", value: plans.filter((p) => p.status === "processing").length, icon: Clock, color: "text-info" },
+          { title: t("developer.totalPlans"), value: plans.length, icon: FileText, color: "text-primary" },
+          { title: t("developer.completed"), value: completedPlans.length, icon: CheckCircle2, color: "text-success" },
+          { title: t("developer.avgROI"), value: `${avgROI}%`, icon: TrendingUp, color: "text-warning" },
+          { title: t("developer.processing"), value: plans.filter((p) => p.status === "processing").length, icon: Clock, color: "text-info" },
         ].map((stat) => (
           <div key={stat.title} className="rounded-xl bg-card border border-border p-4">
             <div className="flex items-center gap-3">
@@ -89,9 +91,9 @@ export default function DeveloperDashboard() {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-primary" /> Recent Plans
+            <Building2 className="w-5 h-5 text-primary" /> {t("developer.recentPlans")}
           </h2>
-          <Link to="/developer/plans" className="text-xs text-primary hover:underline">View all →</Link>
+          <Link to="/developer/plans" className="text-xs text-primary hover:underline">{t("common.viewAll")} →</Link>
         </div>
 
         {loading ? (
@@ -103,11 +105,11 @@ export default function DeveloperDashboard() {
         ) : plans.length === 0 ? (
           <div className="rounded-xl bg-card border border-border p-8 text-center">
             <MapPin className="w-10 h-10 text-muted-foreground mx-auto mb-3" />
-            <p className="text-foreground font-medium">No plans yet</p>
-            <p className="text-sm text-muted-foreground mt-1">Start your first AI land analysis to see results here.</p>
+            <p className="text-foreground font-medium">{t("developer.noPlansYet")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("developer.noPlansDesc")}</p>
             <Link to="/developer/analyze">
               <Button className="mt-4" variant="outline">
-                <Plus className="w-4 h-4 mr-2" /> Create First Plan
+                <Plus className="w-4 h-4 mr-2" /> {t("developer.createFirstPlan")}
               </Button>
             </Link>
           </div>
@@ -152,22 +154,22 @@ export default function DeveloperDashboard() {
         <Link to="/developer/analyze" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <MapPin className="w-5 h-5 text-primary" />
           <div>
-            <p className="text-sm font-medium text-foreground">Analyze Land</p>
-            <p className="text-xs text-muted-foreground">New feasibility study</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.analyzeLand")}</p>
+            <p className="text-xs text-muted-foreground">{t("developer.newFeasibility")}</p>
           </div>
         </Link>
         <Link to="/developer/plans" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <FileText className="w-5 h-5 text-success" />
           <div>
-            <p className="text-sm font-medium text-foreground">All Plans</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.allPlans")}</p>
             <p className="text-xs text-muted-foreground">{plans.length} total</p>
           </div>
         </Link>
         <Link to="/developer/analyze" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <BarChart3 className="w-5 h-5 text-info" />
           <div>
-            <p className="text-sm font-medium text-foreground">Reports</p>
-            <p className="text-xs text-muted-foreground">Export & share</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.reports")}</p>
+            <p className="text-xs text-muted-foreground">{t("developer.exportShare")}</p>
           </div>
         </Link>
       </div>
