@@ -181,5 +181,26 @@
       hsl(var(--primary)) calc(var(--score) * 1%),
       hsl(var(--muted)) calc(var(--score) * 1%)
     );
-  }
+}
+
+/* RTL / Arabic support */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: 'Noto Sans Arabic', 'Playfair Display', serif;
+}
+
+/* Flip directional utilities in RTL */
+[dir="rtl"] .ml-auto { margin-left: unset; margin-right: auto; }
+[dir="rtl"] .mr-2 { margin-right: unset; margin-left: 0.5rem; }
+[dir="rtl"] .mr-1 { margin-right: unset; margin-left: 0.25rem; }
+[dir="rtl"] .pl-9 { padding-left: unset; padding-right: 2.25rem; }
+[dir="rtl"] .left-3 { left: unset; right: 0.75rem; }
+[dir="rtl"] .-translate-x-full { transform: translateX(100%); }
+[dir="rtl"] .translate-x-0 { transform: translateX(0); }
+[dir="rtl"] .left-0 { left: unset; right: 0; }
+[dir="rtl"] .border-r { border-right: none; border-left: 1px solid; border-left-color: inherit; }
+[dir="rtl"] .border-l { border-left: none; border-right: 1px solid; border-right-color: inherit; }
 }
