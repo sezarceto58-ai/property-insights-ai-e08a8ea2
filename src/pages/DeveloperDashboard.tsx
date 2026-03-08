@@ -154,22 +154,22 @@ export default function DeveloperDashboard() {
         <Link to="/developer/analyze" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <MapPin className="w-5 h-5 text-primary" />
           <div>
-            <p className="text-sm font-medium text-foreground">Analyze Land</p>
-            <p className="text-xs text-muted-foreground">New feasibility study</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.analyzeLand")}</p>
+            <p className="text-xs text-muted-foreground">{t("developer.newFeasibility")}</p>
           </div>
         </Link>
         <Link to="/developer/plans" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <FileText className="w-5 h-5 text-success" />
           <div>
-            <p className="text-sm font-medium text-foreground">All Plans</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.allPlans")}</p>
             <p className="text-xs text-muted-foreground">{plans.length} total</p>
           </div>
         </Link>
         <Link to="/developer/analyze" className="rounded-xl bg-card border border-border p-4 flex items-center gap-3 hover:border-primary/30 transition-colors">
           <BarChart3 className="w-5 h-5 text-info" />
           <div>
-            <p className="text-sm font-medium text-foreground">Reports</p>
-            <p className="text-xs text-muted-foreground">Export & share</p>
+            <p className="text-sm font-medium text-foreground">{t("developer.reports")}</p>
+            <p className="text-xs text-muted-foreground">{t("developer.exportShare")}</p>
           </div>
         </Link>
       </div>
