@@ -15,7 +15,9 @@ import {
   Crown,
   Loader2,
   ExternalLink,
+  ShieldCheck,
 } from "lucide-react";
+import RoleSwitcher from "@/components/settings/RoleSwitcher";
 
 export default function Settings() {
   const [searchParams] = useSearchParams();
@@ -27,6 +29,7 @@ export default function Settings() {
 
   const tabs = [
     { id: "profile", label: "Profile", icon: User },
+    { id: "role", label: "Role", icon: ShieldCheck },
     { id: "billing", label: "Billing & Plans", icon: CreditCard },
     { id: "security", label: "Security", icon: Shield },
   ];
@@ -55,6 +58,7 @@ export default function Settings() {
       </div>
 
       {activeTab === "profile" && <ProfileTab user={user} toast={toast} />}
+      {activeTab === "role" && <RoleSwitcher />}
       {activeTab === "billing" && (
         <BillingTab
           tier={tier}
