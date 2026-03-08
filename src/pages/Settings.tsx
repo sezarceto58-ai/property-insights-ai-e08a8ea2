@@ -29,6 +29,7 @@ export default function Settings() {
 
   const tabs = [
     { id: "profile", label: "Profile", icon: User },
+    { id: "role", label: "Role", icon: ShieldCheck },
     { id: "billing", label: "Billing & Plans", icon: CreditCard },
     { id: "security", label: "Security", icon: Shield },
   ];
