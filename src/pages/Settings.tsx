@@ -155,7 +155,7 @@ function BillingTab({
     if (key === "free") return;
     setSubscribing(key);
     try {
-      await subscribe(TIERS[key].price_id);
+      await subscribe(TIERS[key].monthly.price_id);
     } catch (err: any) {
       toast({ title: "Checkout failed", description: err.message, variant: "destructive" });
     } finally {
@@ -237,7 +237,7 @@ function BillingTab({
 
               <h3 className="text-lg font-display font-bold text-foreground">{plan.name}</h3>
               <div className="mt-2 mb-4">
-                <span className="text-3xl font-bold text-foreground">${plan.price}</span>
+                <span className="text-3xl font-bold text-foreground">${plan.monthly.price}</span>
                 <span className="text-muted-foreground text-sm">/month</span>
               </div>
 
