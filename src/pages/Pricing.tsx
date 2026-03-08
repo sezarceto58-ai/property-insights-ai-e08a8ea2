@@ -104,7 +104,7 @@ export default function Pricing() {
                 )}
                 {isCurrent && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-gold text-primary-foreground text-xs font-semibold flex items-center gap-1">
-                    <Crown className="w-3 h-3" /> Your Plan
+                    <Crown className="w-3 h-3" /> {t("pricing.yourPlan")}
                   </span>
                 )}
 
