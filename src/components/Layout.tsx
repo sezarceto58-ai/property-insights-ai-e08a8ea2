@@ -92,11 +92,11 @@ const adminNav = (t: any) => [
 ];
 
 
-function getNavForPath(pathname: string) {
-  if (pathname.startsWith("/developer")) return developerNav;
-  if (pathname.startsWith("/seller")) return sellerNav;
-  if (pathname.startsWith("/admin")) return adminNav;
-  return buyerNav;
+function getNavForPath(pathname: string, t: any) {
+  if (pathname.startsWith("/developer")) return developerNav(t);
+  if (pathname.startsWith("/seller")) return sellerNav(t);
+  if (pathname.startsWith("/admin")) return adminNav(t);
+  return buyerNav(t);
 }
 
 export default function Layout({ children }: {children: React.ReactNode;}) {
