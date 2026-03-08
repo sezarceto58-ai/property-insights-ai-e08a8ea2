@@ -26,35 +26,24 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 import LanguageToggle from "@/components/LanguageToggle";
 
-const buyerNav = [
-{
-  label: "Home",
-  items: [
-  { path: "/buyer", icon: LayoutDashboard, label: "Dashboard" }]
-
-},
-{
-  label: "Marketplace",
-  items: [
-  { path: "/buyer/discover", icon: Search, label: "Discover" },
-  { path: "/buyer/compare", icon: GitCompareArrows, label: "Compare" },
-  { path: "/buyer/favorites", icon: Heart, label: "Favorites" },
-  { path: "/buyer/alerts", icon: Bell, label: "Alerts" }]
-
-},
-{
-  label: "Offers & Deals",
-  items: [
-  { path: "/buyer/offers", icon: BadgeDollarSign, label: "My Offers" },
-  { path: "/buyer/messages", icon: MessageSquare, label: "Messages" }]
-
-},
-{
-  label: "Investor Tools",
-  items: [
-  { path: "/buyer/investor", icon: TrendingUp, label: "AI Intelligence" }]
-
-}];
+const buyerNav = (t: any) => [
+  { label: t("nav.home"), items: [
+    { path: "/buyer", icon: LayoutDashboard, label: t("nav.dashboard") },
+  ]},
+  { label: t("nav.marketplace"), items: [
+    { path: "/buyer/discover", icon: Search, label: t("nav.discover") },
+    { path: "/buyer/compare", icon: GitCompareArrows, label: t("nav.compare") },
+    { path: "/buyer/favorites", icon: Heart, label: t("nav.favorites") },
+    { path: "/buyer/alerts", icon: Bell, label: t("nav.alerts") },
+  ]},
+  { label: t("nav.offersDeals"), items: [
+    { path: "/buyer/offers", icon: BadgeDollarSign, label: t("nav.myOffers") },
+    { path: "/buyer/messages", icon: MessageSquare, label: t("common.messages") },
+  ]},
+  { label: t("nav.investorTools"), items: [
+    { path: "/buyer/investor", icon: TrendingUp, label: t("nav.aiIntelligence") },
+  ]},
+];
 
 
 const sellerNav = [
