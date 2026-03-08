@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Building2, Search, TrendingUp, Shield, ArrowRight, Star } from "lucide-react";
+import LanguageToggle from "@/components/LanguageToggle";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-property.jpg";
 import prop1 from "@/assets/property-1.jpg";
