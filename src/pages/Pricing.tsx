@@ -113,7 +113,7 @@ export default function Pricing() {
                   <span className="text-4xl font-bold text-foreground">
                     ${displayPrice === 0 ? "0" : displayPrice.toFixed(displayPrice % 1 === 0 ? 0 : 2)}
                   </span>
-                  <span className="text-muted-foreground">/mo</span>
+                  <span className="text-muted-foreground">{t("pricing.perMonth")}</span>
                 </div>
 
                 {billing === "yearly" && discount && (
