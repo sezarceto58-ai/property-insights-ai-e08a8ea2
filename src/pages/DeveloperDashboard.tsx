@@ -28,6 +28,7 @@ const statusConfig: Record<string, { icon: any; color: string; label: string }> 
 };
 
 export default function DeveloperDashboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [plans, setPlans] = useState<PlanRow[]>([]);
   const [loading, setLoading] = useState(true);
