@@ -45,6 +45,7 @@ export default function Landing() {
             <span className="text-xl font-display font-bold text-gradient-gold">TerraVista</span>
           </Link>
           <div className="flex items-center gap-3">
+            <LanguageToggle />
             <Button variant="ghost" asChild>
               <Link to="/auth">Sign In</Link>
             </Button>
