@@ -550,6 +550,47 @@ export type Database = {
         }
         Relationships: []
       }
+      property_documents: {
+        Row: {
+          created_at: string
+          document_type: string
+          file_name: string
+          id: string
+          property_id: string
+          storage_path: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          document_type?: string
+          file_name: string
+          id?: string
+          property_id: string
+          storage_path: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          document_type?: string
+          file_name?: string
+          id?: string
+          property_id?: string
+          storage_path?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "property_documents_property_id_fkey"
+            columns: ["property_id"]
+            isOneToOne: false
+            referencedRelation: "properties"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       property_images: {
         Row: {
           created_at: string | null
@@ -584,6 +625,45 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      seller_verifications: {
+        Row: {
+          created_at: string
+          document_url: string | null
+          id: string
+          notes: string | null
+          reviewed_at: string | null
+          status: string
+          storage_path: string | null
+          updated_at: string
+          user_id: string
+          verification_type: string
+        }
+        Insert: {
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          notes?: string | null
+          reviewed_at?: string | null
+          status?: string
+          storage_path?: string | null
+          updated_at?: string
+          user_id: string
+          verification_type?: string
+        }
+        Update: {
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          notes?: string | null
+          reviewed_at?: string | null
+          status?: string
+          storage_path?: string | null
+          updated_at?: string
+          user_id?: string
+          verification_type?: string
+        }
+        Relationships: []
       }
       subscriptions: {
         Row: {
