@@ -26,6 +26,7 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 import LanguageToggle from "@/components/LanguageToggle";
 import NotificationBell from "@/components/NotificationBell";
+import PageTransition from "@/components/PageTransition";
 
 const buyerNav = (t: any) => [
   { label: t("nav.home"), items: [
