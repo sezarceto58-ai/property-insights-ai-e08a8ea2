@@ -46,6 +46,7 @@ import Messaging from "@/pages/Messaging";
 import AdminDashboard from "@/pages/AdminDashboard";
 import AdminVerificationReview from "@/pages/AdminVerificationReview";
 import Settings from "@/pages/Settings";
+import Profile from "@/pages/Profile";
 import Pricing from "@/pages/Pricing";
 import NotFound from "./pages/NotFound";
 
