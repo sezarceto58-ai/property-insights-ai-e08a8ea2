@@ -46,6 +46,7 @@ import Messaging from "@/pages/Messaging";
 import AdminDashboard from "@/pages/AdminDashboard";
 import AdminVerificationReview from "@/pages/AdminVerificationReview";
 import Settings from "@/pages/Settings";
+import Profile from "@/pages/Profile";
 import Pricing from "@/pages/Pricing";
 import NotFound from "./pages/NotFound";
 
@@ -154,6 +155,11 @@ const App = () => (
           <Route path="/settings" element={
             <RequireAuth>
               <Layout><Settings /></Layout>
+            </RequireAuth>
+          } />
+          <Route path="/profile" element={
+            <RequireAuth>
+              <Layout><Profile /></Layout>
             </RequireAuth>
           } />
           <Route path="/pricing" element={<Layout><Pricing /></Layout>} />
