@@ -36,6 +36,7 @@ const buyerNav = (t: any) => [
     { path: "/buyer/investor",            icon: TrendingUp, label: t("nav.aiIntelligence") },
     { path: "/buyer/market-intelligence", icon: BarChart3,  label: "Market Intelligence" },
     { path: "/buyer/syndication",         icon: Users,      label: "Syndication Deals" },
+    { path: "/buyer/valuation",           icon: TrendingUp, label: "AI Valuation" },
   ]},
   { label: "Help", items: [
     { path: "/support", icon: LifeBuoy, label: "Support Center" },
@@ -63,6 +64,7 @@ const sellerNav = (t: any) => [
     { path: "/seller/investor",            icon: TrendingUp, label: t("nav.investorIntelligence") },
     { path: "/seller/market-intelligence", icon: BarChart3,  label: "Market Intelligence" },
     { path: "/seller/syndication",         icon: Users,      label: "Syndication Deals" },
+    { path: "/seller/valuation",           icon: TrendingUp, label: "AI Valuation" },
   ]},
   { label: "Help", items: [
     { path: "/support", icon: LifeBuoy, label: "Support Center" },
@@ -85,6 +87,7 @@ const developerNav = (t: any) => [
     { path: "/developer/messages",            icon: MessageSquare, label: t("common.messages") },
     { path: "/developer/market-intelligence", icon: BarChart3,     label: "Market Intelligence" },
     { path: "/developer/syndication",         icon: Users,         label: "Syndication Deals" },
+    { path: "/developer/valuation",           icon: TrendingUp,    label: "AI Valuation" },
   ]},
   { label: "Help", items: [
     { path: "/support", icon: LifeBuoy, label: "Support Center" },
