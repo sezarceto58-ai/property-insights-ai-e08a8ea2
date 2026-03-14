@@ -200,3 +200,55 @@
 [dir="rtl"] .border-r { border-right: none; border-left: 1px solid; border-left-color: inherit; }
 [dir="rtl"] .border-l { border-left: none; border-right: 1px solid; border-right-color: inherit; }
 }
+
+/* ── Mobile / PWA Enhancements ── */
+
+/* Smooth momentum scrolling on iOS */
+* { -webkit-overflow-scrolling: touch; }
+
+/* Remove tap highlight on mobile */
+a, button { -webkit-tap-highlight-color: transparent; }
+
+/* Better touch targets — minimum 44×44 */
+button, a, [role="button"] { min-height: 36px; }
+
+/* Prevent text size adjustment on orientation change */
+html { -webkit-text-size-adjust: 100%; }
+
+/* Standalone / installed PWA adjustments */
+@media (display-mode: standalone) {
+  /* Push header below status bar on iOS */
+  header {
+    padding-top: max(env(safe-area-inset-top), 0px);
+  }
+  /* Ensure bottom nav doesn't overlap home indicator */
+  .mobile-bottom-nav {
+    padding-bottom: max(env(safe-area-inset-bottom), 12px);
+  }
+}
+
+/* Mobile bottom navigation bar */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid hsl(var(--border));
+  padding-bottom: max(env(safe-area-inset-bottom), 8px);
+}
+
+/* Full-bleed hero images on mobile */
+@media (max-width: 640px) {
+  .mobile-full-bleed { margin-left: -1rem; margin-right: -1rem; }
+}
+
+/* Slide-up animation for mobile sheets */
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
