@@ -32,9 +32,9 @@ export const TIERS = {
   },
   elite: {
     name: "Elite",
-    monthly: { price_id: "price_1T3J6qRqPv86QmN4u811AFF2", price: 79 },
+    monthly: { price_id: "price_1T8nerCfgiuhj2mt6MBMg2oi", price: 79 },
     yearly:  { price_id: "price_1T8nVdCfgiuhj2mtCPv5exkY", price: 474 },
-    product_id: "prod_U1LocwDTmSN7Od",
+    product_id: "prod_U71iMcFlnsDksb",
     yearly_product_id: "prod_U71Y9YCOPDel4X",
     discount: 50,
     features: [
