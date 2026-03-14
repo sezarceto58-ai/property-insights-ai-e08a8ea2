@@ -17,9 +17,9 @@ export const TIERS = {
   },
   pro: {
     name: "Pro",
-    monthly: { price_id: "price_1T3J6aRqPv86QmN4R2yLkgXL", price: 29 },
+    monthly: { price_id: "price_1T8neICfgiuhj2mtie7mhAEp", price: 29 },
     yearly:  { price_id: "price_1T8nDYCfgiuhj2mtxW4tnMmL", price: 243.60 },
-    product_id: "prod_U1LoY0ChJHxRfM",
+    product_id: "prod_U71hrCs7w7d5RJ",
     yearly_product_id: "prod_U71G3QywWMxBVI",
     discount: 30,
     features: [
