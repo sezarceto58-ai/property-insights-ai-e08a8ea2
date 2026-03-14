@@ -167,9 +167,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* ── Sidebar ── */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-sidebar border-r border-sidebar-border flex flex-col transform transition-transform duration-200 lg:translate-x-0 lg:static ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 z-50 w-64 bg-sidebar border-sidebar-border flex flex-col transform transition-transform duration-200 lg:translate-x-0 lg:static
+          ${document.documentElement.dir === "rtl" ? "right-0 border-l" : "left-0 border-r"}
+          ${sidebarOpen ? "translate-x-0" : document.documentElement.dir === "rtl" ? "translate-x-full" : "-translate-x-full"}
+        `}
       >
         {/* Logo */}
         <div className="flex items-center justify-between p-5 border-b border-sidebar-border shrink-0">
@@ -233,6 +234,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           >
             <User className="w-4 h-4" />
             Profile
+          </Link>
+          <Link
+            to="/settings?tab=language"
+            onClick={() => setSidebarOpen(false)}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
+          >
+            <LifeBuoy className="w-4 h-4" />
+            {t("settings.language")}
           </Link>
           <Link
             to="/settings"
