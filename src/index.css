@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
@@ -177,28 +178,148 @@
       hsl(var(--primary)) calc(var(--score) * 1%),
       hsl(var(--muted)) calc(var(--score) * 1%)
     );
+  }
 }
 
-/* RTL / Arabic support */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RTL / Arabic & Kurdish Sorani Support
+   ──────────────────────────────────────────────────────────────────────────── */
+
+
+/* Base RTL font stack — applies to Arabic (ar) and Kurdish Sorani (ku) */
 [dir="rtl"] {
-  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
+  letter-spacing: 0; /* Arabic/Kurdish don't use letter-spacing */
 }
 
+/* Kurdish-specific font overrides for better display */
+[data-lang="ku"] {
+  font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+/* RTL display headings */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
 [dir="rtl"] .font-display {
-  font-family: 'Noto Sans Arabic', 'Playfair Display', serif;
+  font-family: 'Noto Sans Arabic', 'Scheherazade New', Georgia, serif;
+  font-weight: 700;
 }
 
-/* Flip directional utilities in RTL */
-[dir="rtl"] .ml-auto { margin-left: unset; margin-right: auto; }
-[dir="rtl"] .mr-2 { margin-right: unset; margin-left: 0.5rem; }
-[dir="rtl"] .mr-1 { margin-right: unset; margin-left: 0.25rem; }
-[dir="rtl"] .pl-9 { padding-left: unset; padding-right: 2.25rem; }
-[dir="rtl"] .left-3 { left: unset; right: 0.75rem; }
-[dir="rtl"] .-translate-x-full { transform: translateX(100%); }
-[dir="rtl"] .translate-x-0 { transform: translateX(0); }
-[dir="rtl"] .left-0 { left: unset; right: 0; }
-[dir="rtl"] .border-r { border-right: none; border-left: 1px solid; border-left-color: inherit; }
-[dir="rtl"] .border-l { border-left: none; border-right: 1px solid; border-right-color: inherit; }
+/* Text alignment */
+[dir="rtl"] { text-align: right; }
+[dir="rtl"] p { text-align: right; }
+[dir="rtl"] label { text-align: right; }
+
+/* ── Flex / Layout direction reversals ── */
+[dir="rtl"] .flex         { flex-direction: row; }
+[dir="rtl"] .flex-row     { flex-direction: row-reverse; }
+[dir="rtl"] .items-start  { align-items: flex-start; }
+
+/* Tailwind directional utilities — flip in RTL */
+[dir="rtl"] .ml-auto      { margin-left: unset !important; margin-right: auto !important; }
+[dir="rtl"] .mr-auto      { margin-right: unset !important; margin-left: auto !important; }
+[dir="rtl"] .ml-1         { margin-left: unset !important; margin-right: 0.25rem !important; }
+[dir="rtl"] .ml-1\.5     { margin-left: unset !important; margin-right: 0.375rem !important; }
+[dir="rtl"] .ml-2         { margin-left: unset !important; margin-right: 0.5rem !important; }
+[dir="rtl"] .ml-3         { margin-left: unset !important; margin-right: 0.75rem !important; }
+[dir="rtl"] .mr-1         { margin-right: unset !important; margin-left: 0.25rem !important; }
+[dir="rtl"] .mr-1\.5     { margin-right: unset !important; margin-left: 0.375rem !important; }
+[dir="rtl"] .mr-2         { margin-right: unset !important; margin-left: 0.5rem !important; }
+[dir="rtl"] .mr-3         { margin-right: unset !important; margin-left: 0.75rem !important; }
+[dir="rtl"] .mr-4         { margin-right: unset !important; margin-left: 1rem !important; }
+[dir="rtl"] .pl-3         { padding-left: unset !important; padding-right: 0.75rem !important; }
+[dir="rtl"] .pl-4         { padding-left: unset !important; padding-right: 1rem !important; }
+[dir="rtl"] .pl-9         { padding-left: unset !important; padding-right: 2.25rem !important; }
+[dir="rtl"] .pl-10        { padding-left: unset !important; padding-right: 2.5rem !important; }
+[dir="rtl"] .pr-3         { padding-right: unset !important; padding-left: 0.75rem !important; }
+[dir="rtl"] .pr-4         { padding-right: unset !important; padding-left: 1rem !important; }
+[dir="rtl"] .left-3       { left: unset !important; right: 0.75rem !important; }
+[dir="rtl"] .left-4       { left: unset !important; right: 1rem !important; }
+[dir="rtl"] .right-3      { right: unset !important; left: 0.75rem !important; }
+[dir="rtl"] .right-4      { right: unset !important; left: 1rem !important; }
+[dir="rtl"] .left-0       { left: unset !important; right: 0 !important; }
+[dir="rtl"] .right-0      { right: unset !important; left: 0 !important; }
+[dir="rtl"] .rounded-l-xl  { border-radius: 0 0.75rem 0.75rem 0 !important; }
+[dir="rtl"] .rounded-r-xl  { border-radius: 0.75rem 0 0 0.75rem !important; }
+
+/* Sidebar: slide from right in RTL */
+[dir="rtl"] .-translate-x-full { transform: translateX(100%) !important; }
+[dir="rtl"] .translate-x-0     { transform: translateX(0) !important; }
+[dir="rtl"] .lg\:static        { transform: none !important; }
+
+/* Border direction flips */
+[dir="rtl"] .border-r {
+  border-right: none !important;
+  border-left: 1px solid !important;
+  border-left-color: hsl(var(--border)) !important;
+}
+[dir="rtl"] .border-l {
+  border-left: none !important;
+  border-right: 1px solid !important;
+  border-right-color: hsl(var(--border)) !important;
+}
+[dir="rtl"] .border-r-2 {
+  border-right: none !important;
+  border-left: 2px solid !important;
+  border-left-color: inherit;
+}
+[dir="rtl"] .rounded-l-none { border-radius: 0 0.375rem 0.375rem 0 !important; }
+[dir="rtl"] .rounded-r-none { border-radius: 0.375rem 0 0 0.375rem !important; }
+
+/* Icons that convey direction — flip them */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Form inputs: align text right */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Number inputs stay LTR even in RTL pages */
+[dir="rtl"] input[type="number"] {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Sidebar RTL positioning */
+[dir="rtl"] aside.fixed {
+  left: unset !important;
+  right: 0 !important;
+}
+
+/* Active sidebar link indicator — flip the chevron side */
+[dir="rtl"] .sidebar-chevron {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+/* Scrollbar placement in RTL */
+[dir="rtl"] { scrollbar-gutter: stable both-edges; }
+
+/* Gradient text direction */
+[dir="rtl"] .text-gradient-gold {
+  background: linear-gradient(315deg, hsl(42 90% 55%), hsl(38 85% 65%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile bottom nav — same in RTL but with mirrored icon order */
+[dir="rtl"] .mobile-bottom-nav {
+  direction: rtl;
+}
+
+/* Notification badge RTL */
+[dir="rtl"] .notification-badge {
+  right: unset;
+  left: -4px;
 }
 
 /* ── Mobile / PWA Enhancements ── */
