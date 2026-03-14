@@ -5,12 +5,15 @@ import {
   TrendingUp, MessageSquare, DollarSign, Eye, Users, Loader2,
 } from "lucide-react";
 import TerraScore from "@/components/TerraScore";
+import InvestmentScore from "@/components/InvestmentScore";
+import { calculateValuation } from "@/services/valuationEngine";
 import OfferModal from "@/components/OfferModal";
 import { useProperty } from "@/hooks/useProperties";
 import { useToast } from "@/hooks/use-toast";
 import { useToggleFavorite } from "@/hooks/useFavorites";
 import { supabase } from "@/integrations/supabase/client";
 import property1 from "@/assets/property-1.jpg";
+import { trackPropertyView, trackValuationRequest } from "@/services/dataMoat";
 
 export default function PropertyDetail() {
   const { id } = useParams();
@@ -30,6 +33,14 @@ export default function PropertyDetail() {
     }
   }, [id]);
 
+  // Data Moat tracking — fires after property loads
+  useEffect(() => {
+    if (property) {
+      trackPropertyView(property.id, property.city ?? "Unknown", property.price);
+      trackValuationRequest(property.id, property.city ?? "Unknown", property.district ?? "Unknown", property.ai_valuation ?? property.price);
+    }
+  }, [property]);
+
   if (isLoading) {
     return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
   }
@@ -46,6 +57,19 @@ export default function PropertyDetail() {
   const images = property.property_images?.map(i => i.url) ?? [property1];
   const valuationDiff = (property.ai_valuation ?? property.price) - property.price;
   const valuationPercent = Math.round((valuationDiff / property.price) * 100);
+
+  // AI Valuation Engine — Module 1
+  const valuation = calculateValuation({
+    price: property.price,
+    area: property.area ?? 150,
+    bedrooms: property.bedrooms ?? 3,
+    bathrooms: property.bathrooms ?? 2,
+    city: property.city ?? "Erbil",
+    district: property.district ?? "Ankawa",
+    propertyType: property.property_type ?? "Apartment",
+    verified: property.verified ?? false,
+    features: property.features ?? [],
+  });
 
   const handleShare = async () => {
     try {
@@ -120,6 +144,71 @@ export default function PropertyDetail() {
               <TerraScore score={property.terra_score} size="md" />
             </div>
           </div>
+
+          {/* AI Valuation Engine — Module 1 */}
+          <div className="rounded-xl bg-card border border-border p-5 space-y-4">
+            <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <TrendingUp className="w-4 h-4 text-primary" /> AI Valuation Analysis
+            </h3>
+            <div className={`rounded-lg p-3 border ${
+              valuation.verdict === "undervalued" ? "bg-success/10 border-success/20" :
+              valuation.verdict === "overvalued" ? "bg-destructive/10 border-destructive/20" :
+              "bg-warning/10 border-warning/20"
+            }`}>
+              <p className={`text-sm font-bold ${
+                valuation.verdict === "undervalued" ? "text-success" :
+                valuation.verdict === "overvalued" ? "text-destructive" : "text-warning"
+              }`}>{valuation.verdictLabel}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Confidence: {valuation.confidenceLabel} ({valuation.confidenceScore}/100)</p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-lg bg-secondary/50 p-3">
+                <p className="text-[10px] text-muted-foreground">AI Est. Value</p>
+                <p className="text-base font-bold text-foreground">${valuation.estimatedValue.toLocaleString()}</p>
+              </div>
+              <div className="rounded-lg bg-secondary/50 p-3">
+                <p className="text-[10px] text-muted-foreground">Discount vs Market</p>
+                <p className={`text-base font-bold ${valuation.discountPercent <= -5 ? "text-success" : valuation.discountPercent >= 5 ? "text-destructive" : "text-warning"}`}>
+                  {valuation.discountPercent > 0 ? "+" : ""}{valuation.discountPercent}%
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/50 p-3">
+                <p className="text-[10px] text-muted-foreground">Price / m²</p>
+                <p className="text-sm font-bold text-foreground">${valuation.pricePerSqm}/m²</p>
+              </div>
+              <div className="rounded-lg bg-secondary/50 p-3">
+                <p className="text-[10px] text-muted-foreground">Market $/m²</p>
+                <p className="text-sm font-bold text-foreground">${valuation.marketPricePerSqm}/m²</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-foreground mb-2">5-Year Appreciation Forecast</p>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { label: "1 Year", val: valuation.appreciation.oneYear },
+                  { label: "3 Years", val: valuation.appreciation.threeYear },
+                  { label: "5 Years", val: valuation.appreciation.fiveYear },
+                ].map(f => (
+                  <div key={f.label} className="rounded-lg bg-primary/5 border border-primary/10 p-2 text-center">
+                    <p className="text-[10px] text-muted-foreground">{f.label}</p>
+                    <p className="text-xs font-bold text-primary">${(f.val / 1000).toFixed(0)}K</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Investment Score Engine — Module 2 */}
+          <InvestmentScore input={{
+            price: property.price,
+            aiValuation: property.ai_valuation ?? valuation.estimatedValue,
+            rentalYield: 7.5,
+            city: property.city ?? "Erbil",
+            district: property.district ?? "Ankawa",
+            propertyType: property.property_type ?? "Apartment",
+            developerRating: property.agent_verified ? 4.2 : 3.5,
+            verified: property.verified ?? false,
+          }} />
 
           <div className="grid grid-cols-3 gap-4">
             <div className="rounded-xl bg-card border border-border p-4 text-center">
