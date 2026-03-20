@@ -48,6 +48,12 @@ self.addEventListener("fetch", (event) => {
   // Skip non-GET and chrome-extension requests
   if (request.method !== "GET" || url.protocol === "chrome-extension:") return;
 
+  // Never cache Vite dev/preview dependency chunks
+  if (url.pathname.includes(VITE_CHUNK_PATH)) {
+    event.respondWith(fetch(request));
+    return;
+  }
+
   // API / Supabase → Network-first
   if (API_DOMAINS.some((d) => url.hostname.includes(d))) {
     event.respondWith(networkFirst(request, API_CACHE, 5000));
