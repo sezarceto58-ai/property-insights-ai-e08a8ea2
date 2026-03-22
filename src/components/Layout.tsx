@@ -98,7 +98,7 @@ const adminNav = (t: any) => [
   { label: t("nav.governance"), items: [
     { path: "/admin",               icon: Shield,     label: t("nav.console") },
     { path: "/admin/verifications", icon: Shield,     label: t("nav.sellerVerifications") },
-    { path: "/admin/support",       icon: Headphones, label: "Support Console" },
+    { path: "/admin/support",       icon: Headphones, label: t("admin.supportConsole") },
   ]},
 ];
 
