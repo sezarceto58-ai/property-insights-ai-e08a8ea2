@@ -15,6 +15,14 @@ const featuredProperties = [
 ];
 
 export default function Landing() {
+  const { t } = useTranslation();
+
+  const features = [
+    { icon: Search, titleKey: "landing.smartDiscovery", descKey: "landing.smartDiscoveryDesc" },
+    { icon: TrendingUp, titleKey: "landing.investorTools", descKey: "landing.investorToolsDesc" },
+    { icon: Shield, titleKey: "landing.secureTransactions", descKey: "landing.secureTransactionsDesc" },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
@@ -29,10 +37,10 @@ export default function Landing() {
           <div className="flex items-center gap-3">
             <LanguageToggle />
             <Button variant="ghost" asChild>
-              <Link to="/auth">Sign In</Link>
+              <Link to="/auth">{t("common.signIn")}</Link>
             </Button>
             <Button asChild>
-              <Link to="/auth?tab=signup">Get Started</Link>
+              <Link to="/auth?tab=signup">{t("common.getStarted")}</Link>
             </Button>
           </div>
         </div>
@@ -47,20 +55,20 @@ export default function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
         <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-10 text-center">
           <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 leading-tight">
-            Real Estate,{" "}
-            <span className="text-gradient-gold">Reimagined</span>
+            {t("landing.heroTitle").split(",")[0]},{" "}
+            <span className="text-gradient-gold">{t("landing.heroTitle").split(",")[1] || t("landing.heroTitle")}</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            The premier platform for buying, selling, and investing in properties across Kurdistan and Iraq. Powered by AI-driven insights.
+            {t("landing.heroSubtitle")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild className="text-base px-8">
               <Link to="/auth?tab=signup">
-                Start Exploring <ArrowRight className="ml-2 w-4 h-4" />
+                {t("landing.exploreMarketplace")} <ArrowRight className="ml-2 w-4 h-4 rtl-flip" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-base px-8">
-              <Link to="/auth">I Have an Account</Link>
+              <Link to="/auth">{t("common.signIn")}</Link>
             </Button>
           </div>
         </div>
@@ -70,22 +78,22 @@ export default function Landing() {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4">
-            Why <span className="text-gradient-gold">TerraVista</span>?
+            {t("landing.whyTerraVista", "Why")} <span className="text-gradient-gold">TerraVista</span>?
           </h2>
           <p className="text-muted-foreground text-center mb-14 max-w-xl mx-auto">
-            Everything you need to navigate the real estate market with confidence.
+            {t("landing.whySubtitle", "Everything you need to navigate the real estate market with confidence.")}
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f) => (
               <div
-                key={f.title}
+                key={f.titleKey}
                 className="p-6 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors shadow-card"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
                   <f.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-2 text-foreground">{f.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
+                <h3 className="text-xl font-display font-semibold mb-2 text-foreground">{t(f.titleKey)}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{t(f.descKey)}</p>
               </div>
             ))}
           </div>
@@ -96,28 +104,28 @@ export default function Landing() {
       <section className="py-20 px-6 bg-card/50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-14">
-            Featured Properties
+            {t("landing.featuredProperties")}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {featuredProperties.map((p) => (
-              <div key={p.title} className="rounded-xl overflow-hidden bg-card border border-border shadow-card group">
+              <div key={p.titleKey} className="rounded-xl overflow-hidden bg-card border border-border shadow-card group">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={p.image} alt={t(p.titleKey)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-md bg-background/80 backdrop-blur-sm text-xs font-semibold text-primary">
                     <Star className="w-3 h-3" /> {p.score}
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display font-semibold text-foreground mb-1">{p.title}</h3>
+                  <h3 className="font-display font-semibold text-foreground mb-1">{t(p.titleKey)}</h3>
                   <p className="text-primary font-bold text-lg">{p.price}</p>
-                  {p.beds > 0 && <p className="text-muted-foreground text-xs mt-1">{p.beds} Bedrooms</p>}
+                  {p.beds > 0 && <p className="text-muted-foreground text-xs mt-1">{p.beds} {t("property.beds")}</p>}
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center mt-10">
             <Button variant="outline" asChild>
-              <Link to="/auth?tab=signup">View All Properties <ArrowRight className="ml-2 w-4 h-4" /></Link>
+              <Link to="/auth?tab=signup">{t("common.viewAll")} <ArrowRight className="ml-2 w-4 h-4 rtl-flip" /></Link>
             </Button>
           </div>
         </div>
@@ -127,13 +135,13 @@ export default function Landing() {
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Ready to Get Started?
+            {t("landing.ctaTitle", "Ready to Get Started?")}
           </h2>
           <p className="text-muted-foreground mb-8">
-            Join thousands of buyers and sellers on TerraVista today.
+            {t("landing.ctaSubtitle", "Join thousands of buyers and sellers on TerraVista today.")}
           </p>
           <Button size="lg" asChild className="text-base px-10">
-            <Link to="/auth?tab=signup">Create Free Account</Link>
+            <Link to="/auth?tab=signup">{t("landing.ctaButton", "Create Free Account")}</Link>
           </Button>
         </div>
       </section>
@@ -147,7 +155,7 @@ export default function Landing() {
             </div>
             <span className="font-display font-bold text-gradient-gold">TerraVista</span>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 TerraVista. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">{t("landing.copyright", "© 2026 TerraVista. All rights reserved.")}</p>
         </div>
       </footer>
     </div>

@@ -208,7 +208,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     >
                       <item.icon className="w-4 h-4 shrink-0" />
                       <span className="truncate">{item.label}</span>
-                      {isActive && <ChevronRight className="w-3 h-3 ml-auto shrink-0 opacity-60" />}
+                      {isActive && <ChevronRight className="w-3 h-3 ml-auto shrink-0 opacity-60 rtl-flip" />}
                     </Link>
                   );
                 })}
