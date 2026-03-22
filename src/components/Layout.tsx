@@ -34,12 +34,12 @@ const buyerNav = (t: any) => [
   ]},
   { label: t("nav.investorTools"), items: [
     { path: "/buyer/investor",            icon: TrendingUp, label: t("nav.aiIntelligence") },
-    { path: "/buyer/market-intelligence", icon: BarChart3,  label: "Market Intelligence" },
-    { path: "/buyer/syndication",         icon: Users,      label: "Syndication Deals" },
-    { path: "/buyer/valuation",           icon: TrendingUp, label: "AI Valuation" },
+    { path: "/buyer/market-intelligence", icon: BarChart3,  label: t("nav.marketIntelligence") },
+    { path: "/buyer/syndication",         icon: Users,      label: t("nav.syndicationDeals") },
+    { path: "/buyer/valuation",           icon: TrendingUp, label: t("nav.aiValuation") },
   ]},
-  { label: "Help", items: [
-    { path: "/support", icon: LifeBuoy, label: "Support Center" },
+  { label: t("nav.support"), items: [
+    { path: "/support", icon: LifeBuoy, label: t("support.title") },
   ]},
 ];
 
