@@ -34,12 +34,12 @@ const buyerNav = (t: any) => [
   ]},
   { label: t("nav.investorTools"), items: [
     { path: "/buyer/investor",            icon: TrendingUp, label: t("nav.aiIntelligence") },
-    { path: "/buyer/market-intelligence", icon: BarChart3,  label: "Market Intelligence" },
-    { path: "/buyer/syndication",         icon: Users,      label: "Syndication Deals" },
-    { path: "/buyer/valuation",           icon: TrendingUp, label: "AI Valuation" },
+    { path: "/buyer/market-intelligence", icon: BarChart3,  label: t("nav.marketIntelligence") },
+    { path: "/buyer/syndication",         icon: Users,      label: t("nav.syndicationDeals") },
+    { path: "/buyer/valuation",           icon: TrendingUp, label: t("nav.aiValuation") },
   ]},
-  { label: "Help", items: [
-    { path: "/support", icon: LifeBuoy, label: "Support Center" },
+  { label: t("nav.support"), items: [
+    { path: "/support", icon: LifeBuoy, label: t("support.title") },
   ]},
 ];
 
@@ -62,12 +62,12 @@ const sellerNav = (t: any) => [
   ]},
   { label: t("nav.aiTools"), items: [
     { path: "/seller/investor",            icon: TrendingUp, label: t("nav.investorIntelligence") },
-    { path: "/seller/market-intelligence", icon: BarChart3,  label: "Market Intelligence" },
-    { path: "/seller/syndication",         icon: Users,      label: "Syndication Deals" },
-    { path: "/seller/valuation",           icon: TrendingUp, label: "AI Valuation" },
+    { path: "/seller/market-intelligence", icon: BarChart3,  label: t("nav.marketIntelligence") },
+    { path: "/seller/syndication",         icon: Users,      label: t("nav.syndicationDeals") },
+    { path: "/seller/valuation",           icon: TrendingUp, label: t("nav.aiValuation") },
   ]},
-  { label: "Help", items: [
-    { path: "/support", icon: LifeBuoy, label: "Support Center" },
+  { label: t("nav.support"), items: [
+    { path: "/support", icon: LifeBuoy, label: t("support.title") },
   ]},
 ];
 
@@ -85,12 +85,12 @@ const developerNav = (t: any) => [
   ]},
   { label: t("nav.tools"), items: [
     { path: "/developer/messages",            icon: MessageSquare, label: t("common.messages") },
-    { path: "/developer/market-intelligence", icon: BarChart3,     label: "Market Intelligence" },
-    { path: "/developer/syndication",         icon: Users,         label: "Syndication Deals" },
-    { path: "/developer/valuation",           icon: TrendingUp,    label: "AI Valuation" },
+    { path: "/developer/market-intelligence", icon: BarChart3,     label: t("nav.marketIntelligence") },
+    { path: "/developer/syndication",         icon: Users,         label: t("nav.syndicationDeals") },
+    { path: "/developer/valuation",           icon: TrendingUp,    label: t("nav.aiValuation") },
   ]},
-  { label: "Help", items: [
-    { path: "/support", icon: LifeBuoy, label: "Support Center" },
+  { label: t("nav.support"), items: [
+    { path: "/support", icon: LifeBuoy, label: t("support.title") },
   ]},
 ];
 
@@ -98,7 +98,7 @@ const adminNav = (t: any) => [
   { label: t("nav.governance"), items: [
     { path: "/admin",               icon: Shield,     label: t("nav.console") },
     { path: "/admin/verifications", icon: Shield,     label: t("nav.sellerVerifications") },
-    { path: "/admin/support",       icon: Headphones, label: "Support Console" },
+    { path: "/admin/support",       icon: Headphones, label: t("admin.supportConsole") },
   ]},
 ];
 
@@ -208,7 +208,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     >
                       <item.icon className="w-4 h-4 shrink-0" />
                       <span className="truncate">{item.label}</span>
-                      {isActive && <ChevronRight className="w-3 h-3 ml-auto shrink-0 opacity-60" />}
+                      {isActive && <ChevronRight className="w-3 h-3 ml-auto shrink-0 opacity-60 rtl-flip" />}
                     </Link>
                   );
                 })}
@@ -233,7 +233,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
           >
             <User className="w-4 h-4" />
-            Profile
+            {t("common.profile")}
           </Link>
           <Link
             to="/settings?tab=language"

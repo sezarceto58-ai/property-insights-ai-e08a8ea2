@@ -48,7 +48,11 @@
     "tools": "Tools",
     "governance": "Governance",
     "verification": "Verification",
-    "sellerVerifications": "Seller Verifications"
+    "sellerVerifications": "Seller Verifications",
+    "marketIntelligence": "Market Intelligence",
+    "syndicationDeals": "Syndication Deals",
+    "aiValuation": "AI Valuation",
+    "support": "Support"
   },
   "landing": {
     "heroTitle": "The Future of Real Estate in Iraq",
@@ -60,7 +64,16 @@
     "secureTransactions": "Secure Transactions",
     "secureTransactionsDesc": "End-to-end encrypted offers with real-time status tracking and document management.",
     "featuredProperties": "Featured Properties",
-    "exploreMarketplace": "Explore Marketplace"
+    "exploreMarketplace": "Explore Marketplace",
+    "whyTerraVista": "Why",
+    "whySubtitle": "Everything you need to navigate the real estate market with confidence.",
+    "ctaTitle": "Ready to Get Started?",
+    "ctaSubtitle": "Join thousands of buyers and sellers on TerraVista today.",
+    "ctaButton": "Create Free Account",
+    "copyright": "© 2026 TerraVista. All rights reserved.",
+    "villa": "Luxury Villa in Erbil",
+    "apartment": "Modern Apartment Downtown",
+    "commercial": "Commercial Space Sulaymaniyah"
   },
   "auth": {
     "email": "Email",
@@ -155,6 +168,13 @@
     "pending": "Pending",
     "approved": "Approved",
     "rejected": "Rejected",
-    "viewDocument": "View Document"
+    "viewDocument": "View Document",
+    "supportConsole": "Support Console"
+  },
+  "support": {
+    "title": "Support Center"
+  },
+  "property": {
+    "beds": "Bedrooms"
   }
 }

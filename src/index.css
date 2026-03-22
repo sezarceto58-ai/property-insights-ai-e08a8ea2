@@ -187,46 +187,50 @@
    RTL / Arabic & Kurdish Sorani Support
    ──────────────────────────────────────────────────────────────────────────── */
 
-
-/* Base RTL font stack — applies to Arabic (ar) and Kurdish Sorani (ku) */
+/* Base RTL font stack */
 [dir="rtl"] {
   font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
-  letter-spacing: 0; /* Arabic/Kurdish don't use letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.8;
+  word-spacing: 0.02em;
 }
 
-/* Kurdish-specific font overrides for better display */
+/* Kurdish-specific overrides */
 [data-lang="ku"] {
   font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif;
 }
 
-/* RTL display headings */
+/* RTL headings — increased line-height for diacritics */
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3,
 [dir="rtl"] .font-display {
   font-family: 'Noto Sans Arabic', 'Scheherazade New', Georgia, serif;
   font-weight: 700;
+  line-height: 1.5;
+}
+
+/* RTL smaller text sizes need more breathing room */
+[dir="rtl"] .text-xs,
+[dir="rtl"] .text-sm {
+  line-height: 1.9;
 }
 
 /* Text alignment */
 [dir="rtl"] { text-align: right; }
-[dir="rtl"] p { text-align: right; }
-[dir="rtl"] label { text-align: right; }
+[dir="rtl"] .text-center { text-align: center; }
+[dir="rtl"] .text-start { text-align: right; }
+[dir="rtl"] .text-end { text-align: left; }
 
-/* ── Flex / Layout direction reversals ── */
-[dir="rtl"] .flex         { flex-direction: row; }
-[dir="rtl"] .flex-row     { flex-direction: row-reverse; }
-[dir="rtl"] .items-start  { align-items: flex-start; }
-
-/* Tailwind directional utilities — flip in RTL */
+/* ── Logical margin/padding flips ── */
 [dir="rtl"] .ml-auto      { margin-left: unset !important; margin-right: auto !important; }
 [dir="rtl"] .mr-auto      { margin-right: unset !important; margin-left: auto !important; }
 [dir="rtl"] .ml-1         { margin-left: unset !important; margin-right: 0.25rem !important; }
-[dir="rtl"] .ml-1\.5     { margin-left: unset !important; margin-right: 0.375rem !important; }
+[dir="rtl"] .ml-1\.5      { margin-left: unset !important; margin-right: 0.375rem !important; }
 [dir="rtl"] .ml-2         { margin-left: unset !important; margin-right: 0.5rem !important; }
 [dir="rtl"] .ml-3         { margin-left: unset !important; margin-right: 0.75rem !important; }
 [dir="rtl"] .mr-1         { margin-right: unset !important; margin-left: 0.25rem !important; }
-[dir="rtl"] .mr-1\.5     { margin-right: unset !important; margin-left: 0.375rem !important; }
+[dir="rtl"] .mr-1\.5      { margin-right: unset !important; margin-left: 0.375rem !important; }
 [dir="rtl"] .mr-2         { margin-right: unset !important; margin-left: 0.5rem !important; }
 [dir="rtl"] .mr-3         { margin-right: unset !important; margin-left: 0.75rem !important; }
 [dir="rtl"] .mr-4         { margin-right: unset !important; margin-left: 1rem !important; }
@@ -283,7 +287,10 @@
 }
 
 /* Number inputs stay LTR even in RTL pages */
-[dir="rtl"] input[type="number"] {
+[dir="rtl"] input[type="number"],
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="url"] {
   text-align: left;
   direction: ltr;
 }
@@ -294,7 +301,7 @@
   right: 0 !important;
 }
 
-/* Active sidebar link indicator — flip the chevron side */
+/* Active sidebar link indicator — flip the chevron */
 [dir="rtl"] .sidebar-chevron {
   margin-left: unset;
   margin-right: auto;
@@ -309,6 +316,14 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Gap utilities — already direction-agnostic, no flip needed */
+
+/* RTL-aware flex gap for icon+text pairs */
+[dir="rtl"] .gap-2 > .rtl-flip + span,
+[dir="rtl"] .gap-3 > .rtl-flip + span {
+  order: -1;
 }
 
 /* Mobile bottom nav — same in RTL but with mirrored icon order */
