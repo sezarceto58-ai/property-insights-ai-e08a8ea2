@@ -117,7 +117,16 @@
     "secureTransactions": "معاملات آمنة",
     "secureTransactionsDesc": "عروض مشفرة من البداية إلى النهاية مع تتبع الحالة الفوري وإدارة المستندات.",
     "featuredProperties": "عقارات مميزة",
-    "exploreMarketplace": "استكشف السوق"
+    "exploreMarketplace": "استكشف السوق",
+    "whyTerraVista": "لماذا",
+    "whySubtitle": "كل ما تحتاجه للتنقل في سوق العقارات بثقة.",
+    "ctaTitle": "هل أنت مستعد للبدء؟",
+    "ctaSubtitle": "انضم إلى آلاف المشترين والبائعين على TerraVista اليوم.",
+    "ctaButton": "أنشئ حساباً مجانياً",
+    "copyright": "© 2026 TerraVista. جميع الحقوق محفوظة.",
+    "villa": "فيلا فاخرة في أربيل",
+    "apartment": "شقة حديثة وسط المدينة",
+    "commercial": "مساحة تجارية في السليمانية"
   },
   "auth": {
     "email": "البريد الإلكتروني",

@@ -60,7 +60,16 @@
     "secureTransactions": "Secure Transactions",
     "secureTransactionsDesc": "End-to-end encrypted offers with real-time status tracking and document management.",
     "featuredProperties": "Featured Properties",
-    "exploreMarketplace": "Explore Marketplace"
+    "exploreMarketplace": "Explore Marketplace",
+    "whyTerraVista": "Why",
+    "whySubtitle": "Everything you need to navigate the real estate market with confidence.",
+    "ctaTitle": "Ready to Get Started?",
+    "ctaSubtitle": "Join thousands of buyers and sellers on TerraVista today.",
+    "ctaButton": "Create Free Account",
+    "copyright": "© 2026 TerraVista. All rights reserved.",
+    "villa": "Luxury Villa in Erbil",
+    "apartment": "Modern Apartment Downtown",
+    "commercial": "Commercial Space Sulaymaniyah"
   },
   "auth": {
     "email": "Email",
