@@ -8,28 +8,10 @@ import prop1 from "@/assets/property-1.jpg";
 import prop2 from "@/assets/property-2.jpg";
 import prop3 from "@/assets/property-3.jpg";
 
-const features = [
-  {
-    icon: Search,
-    title: "Smart Discovery",
-    description: "AI-powered property matching with TerraScore rankings to find your perfect investment.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Investor Tools",
-    description: "Portfolio tracking, ROI calculators, and market analytics for smarter decisions.",
-  },
-  {
-    icon: Shield,
-    title: "Secure Transactions",
-    description: "End-to-end encrypted offers with real-time status tracking and document management.",
-  },
-];
-
 const featuredProperties = [
-  { image: prop1, title: "Luxury Villa in Erbil", price: "$450,000", beds: 4, score: 92 },
-  { image: prop2, title: "Modern Apartment Downtown", price: "$185,000", beds: 2, score: 87 },
-  { image: prop3, title: "Commercial Space Sulaymaniyah", price: "$320,000", beds: 0, score: 78 },
+  { image: prop1, titleKey: "landing.villa", price: "$450,000", beds: 4, score: 92 },
+  { image: prop2, titleKey: "landing.apartment", price: "$185,000", beds: 2, score: 87 },
+  { image: prop3, titleKey: "landing.commercial", price: "$320,000", beds: 0, score: 78 },
 ];
 
 export default function Landing() {
