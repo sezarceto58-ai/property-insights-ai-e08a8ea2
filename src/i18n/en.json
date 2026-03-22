@@ -48,7 +48,11 @@
     "tools": "Tools",
     "governance": "Governance",
     "verification": "Verification",
-    "sellerVerifications": "Seller Verifications"
+    "sellerVerifications": "Seller Verifications",
+    "marketIntelligence": "Market Intelligence",
+    "syndicationDeals": "Syndication Deals",
+    "aiValuation": "AI Valuation",
+    "support": "Support"
   },
   "landing": {
     "heroTitle": "The Future of Real Estate in Iraq",
